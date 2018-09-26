@@ -6,11 +6,12 @@ const iconURLs = {
     activities: "http://i.imgur.com/WbMOfMl.png"
 };
 
-const buildMarker = (type, coords) => {
+const buildMarker = (name, type, coords) => {
     // Your Code Here
     const markerDomEl = document.createElement("div");
     markerDomEl.style.width = "32px";
     markerDomEl.style.height = "39px";
+    markerDomEl.id = name
 
     if (type == "hotels") {
       markerDomEl.style.backgroundImage = `url(${iconURLs.hotels})`;
@@ -20,7 +21,7 @@ const buildMarker = (type, coords) => {
       markerDomEl.style.backgroundImage = `url(${iconURLs.activities})`;
     }
 
-    new mapboxgl.Marker(markerDomEl).setLngLat(coords)
+    return new mapboxgl.Marker(markerDomEl).setLngLat(coords)
 };
 
 module.exports = buildMarker;
